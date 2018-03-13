@@ -7,8 +7,11 @@
 <html>
 <head>
 
+<!-- 메뉴 css 파일 -->
+<link href="/coffee/resources/css/menu/menu.css" rel="stylesheet" type="text/css">
+
 <!-- 메뉴 js 파일 -->
-<script type="text/javascript" src="/coffee/resources/js/menu.js"></script>
+<script type="text/javascript" src="/coffee/resources/js/menu/menu.js"></script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="resources/dist/js/jquery-3.2.1.js"></script>
@@ -25,8 +28,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
-
-//datepicker
+ //datepicker
 var old_jquery = jQuery.noConflict();
 old_jquery(function() {
 	old_jquery("#startDate").datepicker(
@@ -59,7 +61,7 @@ old_jquery(function() {
 				showMonthAfterYear : true,
 				yearSuffix : '년'
 			});
-});
+}); 
 </script>
 
 </head>
@@ -73,54 +75,44 @@ old_jquery(function() {
 		<input type="hidden" id="e_menu_sp" name="menu_sp">
 		<input type="hidden" id="e_mn_reg_dt" name=mn_reg_dt>
 	</form>
-	<div style="text-align:left;" class="container">
+	
+	
+	<div class="container">
 		<div class="container">
 			<h3>
-				<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-book" ></span>
 				메뉴관리
 			</h3>
 		</div>
-		<div style="margin: 1%; display: inline-block;" class="container">
-			<form id="searchForm" class="form-inline">
+		<div id="search-container" class="container">
+			<form role="form" id="searchForm" class="form-inline">
 				<input type="hidden" id="currentPage" name="currentPage" value="1">
-				<div style="width:60%;" class="form-group">
-					<label display: inline-block;" for="seachCodeAndName">　검색 : </label>
-					<div class="btn-group">
+				<div style="margin:1%; " class="row form-group form-inline">
+				          <input type="text" class="form-control " name="startDate" id="startDate" placeholder="검색시작일"/>
+				          ~
+				          <input type="text"  class="form-control " name="endDate" id="endDate" placeholder="검색종료일"/>
+				</div>
+				<div style="width:60%; " class="form-group form-inline">
 						<select  class="btn btn-default" data-toggle="dropdown"
 							name="searchDiv">
 							<option value="1" selected="selected">메뉴명</option>
 							<option value="2">메뉴코드</option>
-						</select>
-					</div>
+						</select>				
 					<input type="text"
-								class="form-control" name="searchValue"
+								class="form-control " name="searchValue"
 								onkeypress="if(event.keyCode==13) {btnEnter(); return false;}"
 								placeholder="Search">
-							<button style="display: inline-block;" id="searchBtn" class="btn btn-success" type="button">Search</button>
-						</div>
-						
-						<div class="btn-group col-sm-2" >
-						<select type="submit" class="btn btn-default"  id="search_sort" data-toggle="dropdown" name="searchSort" onchange="this.form.submit();">
+					<button  id="searchBtn" class="btn btn-success" type="button">Search</button>
+				</div>
+					<div align="right">
+						<select  type="submit" class="btn btn-default"  id="search_sort" data-toggle="dropdown" name="searchSort" onchange="this.form.submit();">
 							<option value="d" <c:out value="${pageMaker.cri.searchSort == null?'selected' : '' }"/>>등록일순</option>
 							<option value="n" <c:out value="${pageMaker.cri.searchSort == 'n'?'selected' : '' }"/>>메뉴명순</option>
 							<option value="p" <c:out value="${pageMaker.cri.searchSort == 'p'?'selected' : '' }"/>>판매가순</option>
 						</select>
-					 </div>
-						
 					</div>
-				    <div class='col-md-6'>
-					    <div style="text-align:left;" class="row">
-							<div style="margin:1%; display:inline-block;" class="form-group">
-								　　검색 기간 :
-					            <input  style="display:inline-block; width: 30%;" type='text' class="form-control" name="startDate" id='startDate' />
-					            ~
-					            <input style="display:inline-block; width: 30%;" type='text' class="form-control" name="endDate" id='endDate' />
-							</div>
-					</div>		
-				</div>
 			</form>
 		</div>
-
 		<div class="col-lg-12 col-xs-12 col-md-12">
 			<table id="menu_list_table" class="table table-striped recruit">
 				<thead id="menu_list_thead">
@@ -140,7 +132,6 @@ old_jquery(function() {
 		<div class="pagination text-center">
 			<ul class="pagination" id="pagination"></ul>
 		</div>
-
 		<div class="text-left">
 			<button type="button" class="btn btn-danger" id="deleteBtn">선택삭제</button>
 		</div>

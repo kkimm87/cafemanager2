@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.container{
+	width: 940px;
+	max-width: none !important;
+	text-align: left;
+}
+
+#search-container{
+	margin-top: 10px;
+	display: inline-block;
+	max-width: 940px;
+	min-width: 320px;
+}
+
