@@ -33,6 +33,7 @@ import kr.co.coffee.common.pagingUtil;
 import kr.co.coffee.common.domain.Paging;
 import kr.co.coffee.common.domain.Search;
 import kr.co.coffee.ingredient.domain.IngredientVO;
+import kr.co.coffee.menu.domain.MenuOrderVO;
 import kr.co.coffee.menu.domain.MenuVO;
 import kr.co.coffee.menu.service.MenuSvc;
 import kr.co.coffee.sell.domain.SellListVO;
@@ -159,7 +160,7 @@ public class MenuController {
 
 	// 메뉴 리스트 조회
 	@RequestMapping(path = "/menu", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> menuList(Search search) throws Exception {
+	public @ResponseBody Map<String, Object> menuList(MenuOrderVO search) throws Exception {
 		int totalCount = menuSvc.menuTotalCount(search);
 		Paging paging = pagingUtil.getPaging(search, totalCount);
 		search.setStartCount(paging.getStartCount());

@@ -17,9 +17,11 @@
 <script src="resources/dist/js/jquery-3.2.1.js"></script>
 <script src="resources/dist/js/jquery-3.2.1.min.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- bootstrap -->
 <script src="resources/dist/js/bootstrap.js"></script>
 <script src="resources/dist/js/bootstrap.min.js"></script>
+<link href="resources/dist/css/bootstrap.css" rel="stylesheet"/>
+<link href="resources/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
 <!-- datepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment-with-locales.min.js"></script>
@@ -85,7 +87,7 @@ old_jquery(function() {
 			</h3>
 		</div>
 		<div id="search-container" class="container">
-			<form role="form" id="searchForm" class="form-inline">
+			<form role="form" id="searchForm" name="searchForm" class="form-inline">
 				<input type="hidden" id="currentPage" name="currentPage" value="1">
 				<div style="margin:1%; " class="row form-group form-inline">
 				          <input type="text" class="form-control " name="startDate" id="startDate" placeholder="검색시작일"/>
@@ -104,25 +106,35 @@ old_jquery(function() {
 								placeholder="Search">
 					<button  id="searchBtn" class="btn btn-success" type="button">Search</button>
 				</div>
-					<div align="right">
+					<%-- <div align="right">
 						<select  type="submit" class="btn btn-default"  id="search_sort" data-toggle="dropdown" name="searchSort" onchange="this.form.submit();">
 							<option value="d" <c:out value="${pageMaker.cri.searchSort == null?'selected' : '' }"/>>등록일순</option>
 							<option value="n" <c:out value="${pageMaker.cri.searchSort == 'n'?'selected' : '' }"/>>메뉴명순</option>
 							<option value="p" <c:out value="${pageMaker.cri.searchSort == 'p'?'selected' : '' }"/>>판매가순</option>
 						</select>
-					</div>
+					</div> --%>
 			</form>
 		</div>
 		<div class="col-lg-12 col-xs-12 col-md-12">
 			<table id="menu_list_table" class="table table-striped recruit">
-				<thead id="menu_list_thead">
+				<thead>
 					<tr>
 						<th><input type="checkbox" id="allCheck" /></th>
-						<th>메뉴코드</th>
-						<th>메뉴명</th>
-						<th>단가(원)</th>
-						<th>판매가(원)</th>
-						<th>등록일</th>
+						<th>
+						<span class="glyphicon glyphicon-sort-by-alphabet-alt" data-value="1" value="1"  style="cursor:pointer"></span>
+						메뉴코드</th>
+						<th>
+						<span class="glyphicon glyphicon-sort-by-alphabet-alt" data-value="2" value="1"  style="cursor:pointer"></span>
+						메뉴명</th>
+						<th>
+						<span class="glyphicon glyphicon-sort-by-alphabet-alt" data-value="3" value="1"  style="cursor:pointer"></span>
+						단가(원)</th>
+						<th>
+						<span class="glyphicon glyphicon-sort-by-alphabet-alt" data-value="4" value="1"  style="cursor:pointer"></span>
+						판매가(원)</th>
+						<th>
+						<span class="glyphicon glyphicon-sort-by-alphabet-alt" data-value="5" value="1"  style="cursor:pointer"></span>
+						등록일</th>
 					</tr>
 				</thead>
 				<tbody>
